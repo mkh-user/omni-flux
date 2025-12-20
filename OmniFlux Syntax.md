@@ -49,7 +49,6 @@ You can use some keywords in comments (not string-based comments) to highlight i
 # Yellow: NOTE, REFACTOR, OPTIMIZE, DEADLINE, PRIORITY;
 # Green: ASSIGNED_TO, REVIEW, LAST_UPDATE, CATEGORY;
 # Will be highlighted for better comment structure, search, and management.
-"""
 ```
 
 Also supports code regions:
