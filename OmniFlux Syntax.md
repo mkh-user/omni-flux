@@ -125,6 +125,12 @@ Each type is a class.
 ### Variant
 Accepts any type.
 
+### None
+Represents the absence of a value.  
+- Default value for uninitialized variables and constants.  
+- Can be assigned to any variable regardless of type.  
+- Used in conditions as a third state (besides true and false).
+
 ### Void
 Just for return type of functions without any return.
 
@@ -546,7 +552,7 @@ static:
 print("Last static")
 
 static constructor -> bool:
-	if game != null:
+	if game == none:
 		print("Failed to initialize consturctors!")
 		return false
 	print("Contructors initialized")
@@ -561,7 +567,7 @@ static func get_game() -> Game:
 	return game
 
 static func has_game() -> bool:
-	return game != null
+	return game != none
 ```
 
 ```omni
