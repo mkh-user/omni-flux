@@ -1,6 +1,6 @@
 # OmniFlux Syntax Guide
 
-This document shows basic syntax for OnmiFlux language. This is a style guide too.
+This document shows basic syntax for OmniFlux language. This is a style guide too.
 
 ## Comments
 
@@ -343,7 +343,7 @@ else:
     pass
 ```
 
-You can use `switch`, just one branch will be excuted:
+You can use `switch`, just one branch will be executed:
 ```omni
 enum time_state:
 	MORNING,
@@ -509,7 +509,7 @@ with open("data.txt", "a") as file
 ```
 
 ## OOP
-Everithing in OmniFlux is an object, data types are classes too.
+Everything in OmniFlux is an object, data types are classes too.
 
 ```omni
 # class keyword can be used to customize class name, otherwise file name will be used.
@@ -535,7 +535,7 @@ for i in range(2):
 ```
 
 ### Static properties
-`static` keyword can be used for function and variables to make them static. Static functions and variables can be used without creating instance and static veriables are shared between instances. `static:` block and lines outside any function or constructor will be called once per class. `static constructor -> bool:` can be used to run code before first construction and should return `true` at successful initializations.
+`static` keyword can be used for function and variables to make them static. Static functions and variables can be used without creating instance and static variables are shared between instances. `static:` block and lines outside any function or constructor will be called once per class. `static constructor -> bool:` can be used to run code before first construction and should return `true` at successful initializations.
 ```omni
 class User
 
@@ -603,13 +603,13 @@ Instance created
 Instance created
 ```
 
-| Block | Running time | Useful for |
-|-------|--------------|------------|
-| Free code | Class initialization | Simple codes, static behavior, fast setup |
-| `static` | Same as free code, after upper free codes and before next free codes | Same as free code with more readablity |
-| `static cosntructor` | Before first cotsntructor run | Time-safe initializations, when you need two step initialization with delay |
-| `static func` | At call | Accessing static variables, etc. |
-| `constructor` | Instance creation | Initializing instances with different values |
+| Block                | Running time                                                         | Useful for                                                                  |
+|----------------------|----------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| Free code            | Class initialization                                                 | Simple codes, static behavior, fast setup                                   |
+| `static`             | Same as free code, after upper free codes and before next free codes | Same as free code with more readability                                     |
+| `static cosntructor` | Before first constructor run                                         | Time-safe initializations, when you need two step initialization with delay |
+| `static func`        | At call                                                              | Accessing static variables, etc.                                            |
+| `constructor`        | Instance creation                                                    | Initializing instances with different values                                |
 
 ### Import
 Use `import` and `exclude` keywords to manage available modules. You can use `if` and other branching keywords to manage imports.
@@ -661,7 +661,7 @@ from Utils import Counter
 var another_counter := Counter()
 ```
 
-### Constractors
+### Constructors
 ```omni
 class User
 
@@ -688,12 +688,12 @@ constructor(copy: User): # Copy constructor
 ## Style Guide
 
 ### Naming Rules
-| Type | Case | Example |
-|------|------|---------|
-| Constant | `UPPER_SNAKE_CASE` | `const DEBUG = false` |
-| Variable | `snake_case` | `var count := 3` |
-| Function & Function parameter| `snake_case` | `func reset(force := false):` |
-| Signal & Signal parameter| `snake_case` | `signal data_received(data: string)`|
-| Enum name | `PascalCase` | `enum Time:` |
-| Enum value | `UPPER_SNAKE_CASE` | `DAY,` |
-| Class name | `PascalCase` | `class User` |
+| Type                          | Case               | Example                              |
+|-------------------------------|--------------------|--------------------------------------|
+| Constant                      | `UPPER_SNAKE_CASE` | `const DEBUG = false`                |
+| Variable                      | `snake_case`       | `var count := 3`                     |
+| Function & Function parameter | `snake_case`       | `func reset(force := false):`        |
+| Signal & Signal parameter     | `snake_case`       | `signal data_received(data: string)` |
+| Enum name                     | `PascalCase`       | `enum Time:`                         |
+| Enum value                    | `UPPER_SNAKE_CASE` | `DAY,`                               |
+| Class name                    | `PascalCase`       | `class User`                         |
