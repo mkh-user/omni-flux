@@ -143,10 +143,39 @@ This project is currently a concept. The most active area of development is desi
 ### Future Improvements
 - **Design:**  
   - Decide whether OmniFlux will be a compiler, interpreter, or both  
-  - Plan for async functionality  
+  - Plan for async functionality 
+  - New types:
+    - Date / Time / Duration
+    - Byte
+    - Struct / Record
+  - Mixed types behavior
+  - Plan for pattern matching
+  - Macro / Metaprogramming
+  - Reflection / Introspection
+  - Multi-threading / Parallel execution
+  - Foreign Function Interface
 - **Core:**  
   - Choose the primary implementation language  
-  - Implement interpreter/compiler  
+  - Implement interpreter/compiler
+  - Transpile feature
+- **Standard Library:**
+  - date/time
+  - networking
+  - math
+  - file system utilities
+  - regex/pattern matching
+  - serialization
+- **Tooling & Ecosystem:**
+  - Package Manager
+  - Formatter/Linter
+  - Debugger
+  - REPL
+  - LSP Server
+- **Community & Documentation:**
+  - Tutorials & Examples
+  - Syntax highlighter
+  - Test suite
+  - Discussion/Ideas
 
 ## Contribution
 Since OmniFlux is currently just a concept without even an experimental interpreter or compiler, contributions are more valuable in improving the concept rather than implementation. Contributions can be made via PRs and issues.
