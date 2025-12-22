@@ -146,7 +146,6 @@ This project is currently a concept. The most active area of development is desi
   - Plan for async functionality 
   - New types:
     - Date / Time / Duration
-    - Byte
     - Struct / Record
   - Mixed types behavior
   - Plan for pattern matching

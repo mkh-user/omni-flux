@@ -128,26 +128,27 @@ var activation_state: state[3] = none:
 Each type is a class.
 
 ### Overview
-| Idx | Type                    |  In Code   | | Idx | Type       |  In Code  |
-|:---:|:------------------------|:----------:|-|:---:|:-----------|:---------:|
-|  1  | Variant                 | `variant`  | |  2  | Void       |  `void`   |
-|  3  | Boolean                 |   `bool`   | |  4  | Integer    |   `int`   |
-|  5  | State                   |  `state`   | |  6  | Float      |  `float`  |
-|  7  | Complex                 | `complex`  | |  8  | Array      |  `array`  |
-|  9  | Multi-dimensional Array | `mdarray`  | | 10  | Table      |  `table`  |
-| 11  | Queue                   |  `queue`   | | 12  | Dictionary |  `dict`   |
-| 13  | Set                     |   `set`    | | 14  | Tuple      |  `tuple`  |
-| 15  | Pair                    |   `pair`   | | 16  | Triplet    | `triplet` |
-| 17  | Char                    |   `char`   | | 18  | String     | `string`  |
-| 19  | Callable                | `function` | | 20  | Color      |  `color`  |
+| Type                    |  In Code   | | Type    |  In Code  |
+|:------------------------|:----------:|-|:--------|:---------:|
+| Variant                 | `variant`  | | Void    |  `void`   |
+| Boolean                 |   `bool`   | | Integer |   `int`   |
+| Byte                    |   `byte`   | | Char    |  `char`   |
+| State                   |  `state`   | | Float   |  `float`  |
+| Complex                 | `complex`  | | Array   |  `array`  |
+| Multi-dimensional Array | `mdarray`  | | Table   |  `table`  |
+| Queue                   |  `queue`   | | Buffer  | `buffer`  |
+| Set                     |   `set`    | | Tuple   |  `tuple`  |
+| Pair                    |   `pair`   | | Triplet | `triplet` |
+| Dictionary              |   `dict`   | | String  | `string`  |
+| Callable                | `function` | | Color   |  `color`  |
 
 ### Variant
 Accepts any type.
 
 ### None
-Represents the absence of a value.  
-- Default value for uninitialized variables and constants.  
-- Can be assigned to any variable regardless of type.  
+Represents the absence of a value.
+- Default value for uninitialized variables and constants.
+- Can be assigned to any variable regardless of type.
 - Used in conditions as a third state (besides true and false).
 
 ### Void
@@ -156,23 +157,39 @@ Just for return type of functions without any return.
 ### Boolean
 Uses `true` and `false` as booleans. `and`, `or`, and `not` operators are available.
 
-### N-Base state
-Limited range integer value:
-```omni
-var type: state[4] = 1 # 0, 1, 2, or 3
-```
-
 ### Integers
+Integer number.
 ```omni
 var year := 2025
 ```
 
+### Byte
+One byte (8 bits).
+```omni
+var eleven: byte = 00001011
+var fifteen := byte("00001111")
+```
+
+### Char
+One unicode character.
+```omni
+var letter: char = 'A'
+```
+
+### N-Base state
+Limited range integer value.
+```omni
+var type: state[4] = 1 # 0, 1, 2, or 3
+```
+
 ### Float
+Floating point number.
 ```omni
 var temperature := 26.5
 ```
 
 ### Complex
+Complex number with real and imaginary parts.
 ```omni
 # Both will be equal
 var complex_number := Complex(3, 4)
@@ -180,6 +197,7 @@ var valid_complex := 3+4i
 ```
 
 ### Array
+A container of values by index.
 ```omni
 var sample_array := [1, 2, 3]
 var int_array: array[int] = [3, 2, 1]
@@ -192,39 +210,8 @@ var another_r := range(1, 3) # 1, 2
 var steped_r := range(1, 7, 2) # 1, 3, 5
 ```
 
-### Tuple
-```omni
-var t: tuple[int, string, bool] = (42, "Hello", true)
-```
-
-### Set
-```omni
-var s: set[int] = {1, 4, 5, 6}
-```
-
-### Pair & Triplet
-```omni
-# Use size.x or size.y to access values
-# size[0] and size[1] are valid too
-var size: pair[float, string] = (5.4, "MB")
-
-# Use pos.x, pos.y, or pos.z to access values
-# pos[0], pos[1], and pos[2] are valid too
-var pos: triplet[int] = (3, -10, 0)
-```
-
-### Char
-```omni
-var letter: char = 'A'
-```
-
-### String
-```omni
-var font: string = "Vazirmatn"
-var single_letter := "V" # Will be string
-```
-
 ### Multi-dimensional array
+Recurse arrays to keep data in more than one axis.
 ```omni
 var cube: mdarray[2, float] = [
 	[
@@ -241,6 +228,7 @@ var cube: mdarray[2, float] = [
 ```
 
 ### Table
+2-dimensional array with optional header and typed columns.
 ```omni
 var data: table[4, string, int, string, string] = [
 	["UserID", "Age", "Username", "Password"],
@@ -250,6 +238,7 @@ var data: table[4, string, int, string, string] = [
 ```
 
 ### Queue
+Special array to manage queues.
 ```omni
 # Add at the end
 # Remove from the first
@@ -259,17 +248,61 @@ tasks.enqueue("Task 2") # ["Task 1", "Task 2"]
 print(tasks.dequeue()) # prints "Task 1", tasks will be: ["Task 2"]
 ```
 
+### Buffer
+Array of bytes.
+```omni
+var file: buffer = [
+    01001001, 10001101, 00000000,
+    11100100, 00010011, 00000001,
+]
+var message := buffer("Hello World!", buffer.ENCODE_UTF_8)
+```
+
+### Set
+Existence-based container.
+```omni
+var s: set[int] = {1, 4, 5, 6}
+```
+
+### Tuple
+Index-based container with limited size.
+```omni
+var t: tuple[int, string, bool] = (42, "Hello", true)
+```
+
+### Pair & Triplet
+Tuples with 2 and 3 size.
+```omni
+# Use size.x or size.y to access values
+# size[0] and size[1] are valid too
+var size: pair[float, string] = (5.4, "MB")
+
+# Use pos.x, pos.y, or pos.z to access values
+# pos[0], pos[1], and pos[2] are valid too
+var pos: triplet[int] = (3, -10, 0)
+```
+
 ### Dictionary
+Key-value container.
 ```omni
 var passwords: dict[string, string] = {"Admin": "1234", "User1": "cx?!@63"}
 ```
 
+### String
+Sequence of characters.
+```omni
+var font: string = "Vazirmatn"
+var single_letter := "V" # Will be string
+```
+
 ### Callable function
+A function that can be called.
 ```omni
 var to_int: function = func(data: string) -> int: return int(data)
 ```
 
 ### Color
+RGBA color.
 ```omni
 var red := Color.RED
 var blue: color = Color(0, 0, 1)
@@ -359,16 +392,16 @@ else:
 
 You can use `switch`, just one branch will be executed:
 ```omni
-enum time_state:
+enum TimeState:
 	MORNING,
 	DAY,
 	NIGHT,
 	MIDNIGHT,
 
 switch time:
-	case time_state.DAY:
+	case TimeState.DAY:
 		pass
-	case time_state.NIGHT, time_state.MORNING:
+	case TimeState.NIGHT, TimeState.MORNING:
 		pass
 	default:
 		pass
@@ -398,17 +431,17 @@ for i in range(1, 10):
 		if i == 9 and j == 9:
 			continue(2) # skips this iteration and next one
 		if i == 10:
-			continue(loops=2) # skips this iteration and current iteration in outter loop
+			continue(loops=2) # skips this iteration and current iteration in outer loop
 	match inner_status.status:
 		case LOOP_STATUS_COMPLETE:
 			print("Inner loop was passed completely.")
 		case LOOP_STATUS_FULL_SKIP:
-			print("Inner loop wasn't excuted any time.")
+			print("Inner loop wasn't executed any time.")
 		case LOOP_STATUS_HAS_SKIP:
 			print(f"Inner loop was skipped for {inner_status.skip_count} times.")
 		case LOOP_STATUS_BREAK:
-			print(f"Inner loop was breaked at {inner_status.break_iteration} iteration.")
-	print(f"Inner loop excuted: {inner_status.iter_excuted} of {inner_status.iter_count} ({inner_status.iter_completely_excuted} iterations were completed)")
+			print(f"Inner loop was broke at {inner_status.break_iteration} iteration.")
+	print(f"Inner loop executed: {inner_status.iter_executed} of {inner_status.iter_count} ({inner_status.iter_completely_executed} iterations were completed)")
 else:
     print("Nothing) # when loop number is 0 (e.g. for i in []), same as LOOP_STATUS_FULL_SKIP
 ```
@@ -473,7 +506,7 @@ except Error as error:
 else:
 	print(f"X: {x}") # At success
 finally:
-	print("Cleanup...") # Even at unexcepected error
+	print("Cleanup...") # Even at unexpected error
 
 raise "Custom Error!"
 
@@ -572,9 +605,9 @@ print("Last static")
 
 static constructor -> bool:
 	if game == none:
-		print("Failed to initialize consturctors!")
+		print("Failed to initialize constructors!")
 		return false
-	print("Contructors initialized")
+	print("Constructors initialized")
 	return true
 
 constructor(name: string, age: int):
