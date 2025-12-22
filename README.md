@@ -57,7 +57,7 @@ OmniFlux offers unique features focused on simplicity and programmer quality of 
 - Signals  
 - Powerful enums:  
   - Anonymous enums  
-  - Anonymous show  
+  - Anonymous shadow  
   - Named enums  
   - Enums as types  
 - `switch` / `case` / `default`  
