@@ -127,6 +127,20 @@ var activation_state: state[3] = none:
 ## Types
 Each type is a class.
 
+### Overview
+| Idx | Type                    |  In Code   | | Idx | Type       |  In Code  |
+|:---:|:------------------------|:----------:|-|:---:|:-----------|:---------:|
+|  1  | Variant                 | `variant`  | |  2  | Void       |  `void`   |
+|  3  | Boolean                 |   `bool`   | |  4  | Integer    |   `int`   |
+|  5  | State                   |  `state`   | |  6  | Float      |  `float`  |
+|  7  | Complex                 | `complex`  | |  8  | Array      |  `array`  |
+|  9  | Multi-dimensional Array | `mdarray`  | | 10  | Table      |  `table`  |
+| 11  | Queue                   |  `queue`   | | 12  | Dictionary |  `dict`   |
+| 13  | Set                     |   `set`    | | 14  | Tuple      |  `tuple`  |
+| 15  | Pair                    |   `pair`   | | 16  | Triplet    | `triplet` |
+| 17  | Char                    |   `char`   | | 18  | String     | `string`  |
+| 19  | Callable                | `function` | | 20  | Color      |  `color`  |
+
 ### Variant
 Accepts any type.
 
@@ -139,7 +153,7 @@ Represents the absence of a value.
 ### Void
 Just for return type of functions without any return.
 
-### Booleans
+### Boolean
 Uses `true` and `false` as booleans. `and`, `or`, and `not` operators are available.
 
 ### N-Base state
@@ -258,7 +272,7 @@ var to_int: function = func(data: string) -> int: return int(data)
 ### Color
 ```omni
 var red := Color.RED
-var blue := Color(0, 0, 1)
+var blue: color = Color(0, 0, 1)
 var transparent := Color(1, 1, 1, 0)
 ```
 
