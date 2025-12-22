@@ -12,13 +12,14 @@ OmniFlux supports single-line comments with `#` character, inline comments can b
 var name = "Ali" # Inline comment
 ```
 
-You can use single string literals as comment:
+You can use separate string literals as comment:
 
 ```omni
 "String literals are comments too."
 
 """
-So you can use multi-line strings as multi-line comment.
+So you can use multi-line strings
+as multi-line comment.
 """
 ```
 
@@ -86,16 +87,20 @@ var auto_type := -1.9
 
 Change value with `variable = value`:
 ```omni
-"""
-From last code...
-""
+#From last code...
 
-name = 12 # Valid, name is dynamic typed
-_static_typed = "-7" # Invalid, [var _static_typed] is integer!
-none_by_default = ["A"]  # Valid
-none_by_default = {"A": none_by_default} # Valid, value will be parsed before assignment
-_static_typed = none_array # Valid, [var _static_typed] is integer, but [code]none[/code] can be passed to any variable and [var none_array] is [code]none[/code].
-auto_type = 1 # Valid, 1 will be parsed to 1.0 ([var auto_type] is a float typed variable)
+# Valid, name is dynamic typed
+name = 12
+# Invalid, [var _static_typed] is integer!
+_static_typed = "-7"
+# Valid
+none_by_default = ["A"]
+# Valid, value will be parsed before assignment
+none_by_default = {"A": none_by_default}
+# Valid, [var _static_typed] is integer, but [code]none[/code] can be passed to any variable and [var none_array] is [code]none[/code].
+_static_typed = none_array
+# Valid, 1 will be parsed to 1.0 ([var auto_type] is a float typed variable)
+auto_type = 1
 ```
 
 Also supports optional setter and getters:
@@ -141,7 +146,6 @@ Uses `true` and `false` as booleans. `and`, `or`, and `not` operators are availa
 Limited range integer value:
 ```omni
 var type: state[4] = 1 # 0, 1, 2, or 3
-var like_bool: state[3] = none # 0, 1, 2, can be used as boolean: false, true, none
 ```
 
 ### Integers
@@ -163,7 +167,7 @@ var valid_complex := 3+4i
 
 ### Array
 ```omni
-var array := [1, 2, 3]
+var sample_array := [1, 2, 3]
 var int_array: array[int] = [3, 2, 1]
 ```
 
@@ -188,10 +192,10 @@ var s: set[int] = {1, 4, 5, 6}
 ```omni
 # Use size.x or size.y to access values
 # size[0] and size[1] are valid too
-var size: pair(float, string) = (5.4, "MB")
+var size: pair[float, string] = (5.4, "MB")
 
 # Use pos.x, pos.y, or pos.z to access values
-# size[0], size[1], and size[2] are valid too
+# pos[0], pos[1], and pos[2] are valid too
 var pos: triplet[int] = (3, -10, 0)
 ```
 
@@ -206,17 +210,9 @@ var font: string = "Vazirmatn"
 var single_letter := "V" # Will be string
 ```
 
-### Array
+### Multi-dimensional array
 ```omni
-# Array with static typed items
-var prime: array[int] = [2,3,5,7]
-# Array with dynamic typed items
-var random: array = [3, "Dynamic", 4.2, []]
-```
-
-#### Multi-dimensional array
-```omni
-var cube: array[array[float]] = [
+var cube: mdarray[2, float] = [
 	[
 		[1.3,2,5],
 		[-6,0.1,7.5],
@@ -230,7 +226,16 @@ var cube: array[array[float]] = [
 ]
 ```
 
-#### Queue
+### Table
+```omni
+var data: table[4, string, int, string, string] = [
+	["UserID", "Age", "Username", "Password"],
+	["U_54xC", 21, "Max", "M2002X"],
+	["U_3z62", 23, "Joe", "LaT3X!01"],
+]
+```
+
+### Queue
 ```omni
 # Add at the end
 # Remove from the first
