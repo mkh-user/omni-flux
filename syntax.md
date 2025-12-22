@@ -586,8 +586,8 @@ var game := Game()
 User.game = game
 print(User.has_game())
 print("Instance")
-User("Alex", 32)
-User("Joe", -41)
+var alex := User("Alex", 32)
+var joe := User("Joe", -41)
 ```
 Output:
 ```
