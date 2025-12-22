@@ -85,7 +85,7 @@ auto_type = 1
 
 # Also supports optional setter and getters:
 var activation_state: state[3] = none:
-	set(new_state: state[3]) -> void:
+	setter(new_state: state[3]) -> void:
 		if new_state == true:
 			print("Activated")
 		elif new_state == false:
@@ -93,7 +93,7 @@ var activation_state: state[3] = none:
 		else:
 			print("Reset activation state...")
 		activation_state = new_state
-	get(force_value := false) -> string: # Can get parameters!
+	getter(force_value := false) -> string: # Can get parameters!
 		if activation_state == true:
 			return "Completed"
 		elif activation_state == false or force_value:

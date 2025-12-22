@@ -107,7 +107,7 @@ Also supports optional setter and getters:
 
 ```omni
 var activation_state: state[3] = none:
-	set(new_state: state[3]) -> void:
+	setter(new_state: state[3]) -> void:
 		if new_state == true:
 			print("Activated")
 		elif new_state == false:
@@ -115,7 +115,7 @@ var activation_state: state[3] = none:
 		else:
 			print("Reset activation state...")
 		activation_state = new_state
-	get() -> string: # Can get parameters!
+	getter() -> string: # Can get parameters!
 		if activation_state == true:
 			return "Completed"
 		elif activation_state == false:
